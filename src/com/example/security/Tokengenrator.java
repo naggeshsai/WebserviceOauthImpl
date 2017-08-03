@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONObject;
 
+import com.example.model.Tokens;
 import com.example.util.Util;
 
 @Path("/auth")
@@ -22,9 +23,8 @@ public class Tokengenrator {
 	@Path("/gettoken")
 	public Response gettoken(@HeaderParam("authorization") String authString) {
 		util = new Util();
-		JSONObject json = new JSONObject();
-		json.put("accessToken", util.getToken());
-		json.put("refreshToken", util.getToken());
+		Tokens token = new Tokens(util.getToken(), util.getToken());
+		JSONObject json = new JSONObject(token);
 		if (isAuthenticated(authString)) {
 			return Response.status(200).entity(json.toString()).build();
 		} else {

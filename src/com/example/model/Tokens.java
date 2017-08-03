@@ -20,4 +20,9 @@ public class Tokens {
 		this.refreshToken = refreshToken;
 	}
 
+	public Tokens(String accessToken, String refreshToken) {
+		this.accessToken = accessToken;
+		this.refreshToken = refreshToken;
+	}
+
 }
